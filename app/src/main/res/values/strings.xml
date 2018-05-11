@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyMovies</string>
+    <string name="error_message">Error!</string>
+    <string name="sort_by">Sort by</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="sort_by_rating">Rating</string>
+    <string name="sort_by_popularity">Popularity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="connection_error">Ops, looks like you are offline, please check your connectivity and try again</string>
+    <string name="general_error">Ops, looks like something went wrong when looking for your awesome movies. We hired some highly trained anteaters developers to help us</string>
+</resources>
