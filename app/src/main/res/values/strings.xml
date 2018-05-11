@@ -8,4 +8,26 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="connection_error">Ops, looks like you are offline, please check your connectivity and try again</string>
     <string name="general_error">Ops, looks like something went wrong when looking for your awesome movies. We hired some highly trained anteaters developers to help us</string>
+    <string name="popularity_desc">popularity.desc</string>
+    <string name="average_desc">vote_average.desc</string>
+    <string name="movie">Movie</string>
+    <string name="api_key">api_key</string>
+    <string name="images_url">http://image.tmdb.org/t/p/</string>
+    <string name="image_size">w342</string>
+    <string name="api_url">https://api.themoviedb.org/3/discover/movie?</string>
+    <string name="json">json</string>
+    <string name="language">language</string>
+    <string name="en_us">en-US</string>
+    <string name="sort_by_param">sort_by</string>
+    <string name="include_adult">include_adult</string>
+    <string name="include_video">include_video</string>
+    <string name="page">page</string>
+    <string name="false_flag">false</string>
+    <string name="vote_average">vote_average</string>
+    <string name="title">title</string>
+    <string name="poster_path">poster_path</string>
+    <string name="results">results</string>
+    <string name="overiview">overview</string>
+    <string name="release_date">release_date</string>
+    <string name="status_code">status_code</string>
 </resources>

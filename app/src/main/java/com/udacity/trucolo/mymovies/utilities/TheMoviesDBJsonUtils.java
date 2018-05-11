@@ -3,6 +3,8 @@ package com.udacity.trucolo.mymovies.utilities;
 import android.content.Context;
 import android.util.Log;
 
+import com.udacity.trucolo.mymovies.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,13 +20,13 @@ public class TheMoviesDBJsonUtils {
 
         //Movie details layout contains title, release date, movie poster, vote average, and plot synopsis.
 
-        final String VOTE_AVERAGE = "vote_average";
-        final String TITLE = "title";
-        final String POSTER_PATH = "poster_path";
-        final String RESULTS = "results";
-        final String OVERVIEW = "overview";
-        final String RELEASE_DATE = "release_date";
-        final String STATUS_CODE = "status_code";
+        final String VOTE_AVERAGE = context.getString(R.string.vote_average);
+        final String TITLE = context.getString(R.string.title);
+        final String POSTER_PATH = context.getString(R.string.poster_path);
+        final String RESULTS = context.getString(R.string.results);
+        final String OVERVIEW = context.getString(R.string.overiview);
+        final String RELEASE_DATE = context.getString(R.string.release_date);
+        final String STATUS_CODE = context.getString(R.string.status_code);
         final int INVALID_API_KEY = 7;
 
         ArrayList<Movie> dataMovies = new ArrayList<Movie>();
@@ -62,7 +64,7 @@ public class TheMoviesDBJsonUtils {
             String posterUrl = NetworkUtils.buildImgUrl(posterLink.replace("/","")).toString();
             String average = movie.getString(VOTE_AVERAGE);
             String description = movie.getString(OVERVIEW);
-            Movie m = new Movie(title, releaseDate, posterUrl, "Rating " + average, description);
+            Movie m = new Movie(title, releaseDate, posterUrl, context.getString(R.string.sort_by_rating) + average, description);
             dataMovies.add(m);
 
         }

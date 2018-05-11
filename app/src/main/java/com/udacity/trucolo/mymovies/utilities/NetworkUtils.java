@@ -1,12 +1,15 @@
 package com.udacity.trucolo.mymovies.utilities;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.Log;
+
+import com.udacity.trucolo.mymovies.R;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,27 +23,26 @@ public class NetworkUtils {
 
 
     private static final String TAG = NetworkUtils.class.getSimpleName();
-    private static final String DYNAMIC_IMAGES_URL = "http://image.tmdb.org/t/p/";
-    private static final String IMAGE_SIZE = "w342";
-
-    private static final String MOVIES_BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
+    private static final String DYNAMIC_IMAGES_URL = Resources.getSystem().getString(R.string.images_url);
+    private static final String IMAGE_SIZE = Resources.getSystem().getString(R.string.image_size);
+    private static final String MOVIES_BASE_URL = Resources.getSystem().getString(R.string.api_url);
 
     /* The format we want our API to return */
-    private static final String format = "json";
+    private static final String format = Resources.getSystem().getString(R.string.json);
 
-    final static String API_KEY_PARAM = "api_key";
+    private final static String API_KEY_PARAM = Resources.getSystem().getString(R.string.api_key);
 
     /*
     Example of API being called:
     https://api.themoviedb.org/3/discover/movie?api_key=<API_KEY>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2
     */
 
-    private final static String LANG_PARAM = "en-US";
-    private final static String LANG = "en-US";
-    private final static String SORT_PARAM = "sort_by";
-    private final static String ADULT_PARAM = "include_adult";
-    private final static String INCLUDE_VIDEO_PARAM = "include_video";
-    private final static String PAGE_PARAM = "page";
+    private final static String LANG_PARAM = Resources.getSystem().getString(R.string.language);
+    private final static String LANG = Resources.getSystem().getString(R.string.en_us);
+    private final static String SORT_PARAM = Resources.getSystem().getString(R.string.sort_by_param);
+    private final static String ADULT_PARAM = Resources.getSystem().getString(R.string.include_adult);
+    private final static String INCLUDE_VIDEO_PARAM = Resources.getSystem().getString(R.string.include_video);
+    private final static String PAGE_PARAM = Resources.getSystem().getString(R.string.page);
 
     /**
      * Builds the URL used to talk to the moviesDB server using a sort parameter. This location is based
@@ -55,8 +57,8 @@ public class NetworkUtils {
                 .appendQueryParameter(API_KEY_PARAM, apiKey)
                 .appendQueryParameter(LANG_PARAM, LANG)
                 .appendQueryParameter(SORT_PARAM, sortBy)
-                .appendQueryParameter(ADULT_PARAM, "false")
-                .appendQueryParameter(INCLUDE_VIDEO_PARAM, "false")
+                .appendQueryParameter(ADULT_PARAM, Resources.getSystem().getString(R.string.false_flag))
+                .appendQueryParameter(INCLUDE_VIDEO_PARAM, Resources.getSystem().getString(R.string.false_flag))
                 .appendQueryParameter(PAGE_PARAM, pageNumber)
                 .build();
 

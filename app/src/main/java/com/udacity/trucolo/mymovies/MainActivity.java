@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
     private TextView mErrorMessageDisplay;
-    private final String POPULARITY = "popularity.desc";
-    private final String RATING = "vote_average.desc";
+    private final String POPULARITY = getString(R.string.popularity_desc);
+    private final String RATING = getString(R.string.average_desc);
     String sort = POPULARITY;
     private String apiKey;
     int page = 1;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         Context context = this;
         Class destinationClass = MovieDetails.class;
         Intent intentToStartDetailActivity = new Intent(context, destinationClass);
-        intentToStartDetailActivity.putExtra("Movie", movie);
+        intentToStartDetailActivity.putExtra(getString(R.string.movie), movie);
         startActivity(intentToStartDetailActivity);
     }
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             InputStream rawResource = resources.openRawResource(R.raw.config);
             Properties properties = new Properties();
             properties.load(rawResource);
-            apiKey = properties.getProperty("api_key");
+            apiKey = properties.getProperty(getString(R.string.api_key));
         } catch (Resources.NotFoundException e){
             Log.e(TAG, "Unable to find the config file: " + e.getMessage());
         } catch (IOException e) {

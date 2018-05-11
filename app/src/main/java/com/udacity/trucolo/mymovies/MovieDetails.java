@@ -44,7 +44,7 @@ public class MovieDetails extends AppCompatActivity {
         Intent intentThatStartedThisActivity = getIntent();
 
         if(intentThatStartedThisActivity != null){
-            if((movie = (Movie) intentThatStartedThisActivity.getSerializableExtra("Movie")) != null){
+            if((movie = (Movie) intentThatStartedThisActivity.getSerializableExtra(getString(R.string.movie))) != null){
                 Picasso.with(this).load(movie.getPosterUrl()).into(mPoster);
                 Picasso.with(this).load(movie.getPosterUrl()).into(mSmallPoster);
                mSynopsis.setText(movie.getDescription());
