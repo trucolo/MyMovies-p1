@@ -83,12 +83,14 @@
 
         <TextView
             android:id="@+id/tv_movie_title"
-            android:layout_width="88dp"
+            android:layout_width="252dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="244dp"
             android:textColor="@color/lightGray"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_small_poster"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>

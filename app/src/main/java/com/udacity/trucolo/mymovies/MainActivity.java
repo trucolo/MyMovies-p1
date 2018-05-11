@@ -35,12 +35,13 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
     private TextView mErrorMessageDisplay;
-    private final String POPULARITY = getString(R.string.popularity_desc);
-    private final String RATING = getString(R.string.average_desc);
-    String sort = POPULARITY;
+    private String POPULARITY;
+    private String RATING;
+    String sort;
     private String apiKey;
     int page = 1;
     private final String TAG = MainActivity.class.getSimpleName();
+
 
     @Override
     public void onClick(Movie movie) {
@@ -64,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        POPULARITY = this.getString(R.string.popularity_desc);
+
+        RATING = this.getString(R.string.average_desc);
+
+        sort = POPULARITY;
+
 
         super.onCreate(savedInstanceState);
 
@@ -156,7 +163,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
             String sortCriteria = params[0];
             String pageNumber = params[1];
-            URL moviesRequestUrl = NetworkUtils.buildUrl(sortCriteria, pageNumber, apiKey);
+            Context c = getParent();
+            URL moviesRequestUrl = NetworkUtils.buildUrl(sortCriteria, pageNumber, apiKey, MainActivity.this);
 
             try {
                 String jsonMoviesResponse = NetworkUtils

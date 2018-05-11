@@ -23,6 +23,7 @@
         android:textSize="20sp"
         android:visibility="invisible" />
 
+
     <ProgressBar
         android:id="@+id/pb_loading_indicator"
         android:layout_width="wrap_content"
