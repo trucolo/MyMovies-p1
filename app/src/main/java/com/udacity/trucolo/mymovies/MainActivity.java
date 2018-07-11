@@ -1,7 +1,6 @@
 package com.udacity.trucolo.mymovies;
 
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +12,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     RecyclerView.LayoutManager mLayoutManager;
     private static int MOVIES_SEARCH_LOADER = 22;
     ArrayList<Movie> movieData;
-    private RetainedFragment dataFragment;
 
 
     @Override
@@ -55,26 +54,16 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FragmentManager fm = getFragmentManager();
-        dataFragment = (RetainedFragment) fm.findFragmentByTag(getResources().getString(R.string.movie));
 
-        //default sort method
         sort = POPULARITY;
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_main);
         mErrorMessageDisplay = (TextView) findViewById(R.id.tv_error_display);
-        mLayoutManager = new StaggeredGridLayoutManager(this.getResources().getInteger(R.integer.number_of_columns), StaggeredGridLayoutManager.VERTICAL);
+        mLayoutManager = new GridLayoutManager(this, numberOfColumns());
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         mMovieAdapter = new MovieAdapter(this);
         mRecyclerView.setAdapter(mMovieAdapter);
-
-        if(dataFragment == null){
-            dataFragment = new RetainedFragment();
-            fm.beginTransaction().add(dataFragment, getResources().getString(R.string.movie)).commit();
-        }else{
-            movieData = dataFragment.getData();
-            mMovieAdapter.setInitMovieData(movieData);
-        }
 
         Resources resources = this.getResources();
         try{
@@ -99,14 +88,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                     // only when scrolling up
                     final int visibleThreshold = getResources().getInteger(R.integer.number_of_columns);
                     int lastVisiblePositions[];
-                    StaggeredGridLayoutManager layoutManager = (StaggeredGridLayoutManager)mRecyclerView.getLayoutManager();
+                    GridLayoutManager layoutManager = (GridLayoutManager)mRecyclerView.getLayoutManager();
 
                     lastVisiblePositions = new int[visibleThreshold];
                     //sometimes due to layout options, one or more positions aren't filled up correctly, then I have to
                     //get the max of those positions to be able to continue scrolling
-                    int lastItem  = max(layoutManager.findLastCompletelyVisibleItemPositions(lastVisiblePositions));
+                    int lastItem  = layoutManager.findLastVisibleItemPosition();
                     int currentTotalCount = layoutManager.getItemCount();
-                    if(currentTotalCount <= lastItem + visibleThreshold){
+                    if(currentTotalCount <= lastItem + numberOfColumns()){
                         loadMovieData();
                     }
                 }
@@ -134,9 +123,16 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
      * */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
-        // Always call the superclass so it can restore the view hierarchy
-        Log.v(TAG, "Executing onRestoreInstanceState");
+        Log.v(TAG, "Executando onRestoreInstanceState");
         super.onRestoreInstanceState(savedInstanceState);
+        movieData = savedInstanceState.getParcelableArrayList(getResources().getString(R.string.movie));
+        if (null != movieData && !movieData.isEmpty()) {
+            showMovieDataView();
+            mMovieAdapter.setMovieData(movieData);
+            page = savedInstanceState.getInt(getResources().getString(R.string.page));
+            sort = savedInstanceState.getString(getResources().getString(R.string.sort_by));
+            //page+=1;
+        }
     }
 
 
@@ -164,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(getResources().getString(R.string.movie), movieData);
         outState.putInt(getResources().getString(R.string.page), page);
         outState.putString(getResources().getString(R.string.sort_by), sort);
         super.onSaveInstanceState(outState);
@@ -283,38 +280,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        dataFragment.setData(movieData);
-    }
 
-
-
-    /**
-     * Used to retain the list of movies that was already loaded on our activity
-     * This class is used instead of saving that list on Bundle and avoiding the TooLarge exception
-     *
-     * */
-    public static class RetainedFragment extends Fragment {
-
-        // data object we want to retain
-        private ArrayList<Movie> data;
-
-        // this method is only called once for this fragment
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            // retain this fragment
-            setRetainInstance(true);
-        }
-
-        public void setData(ArrayList<Movie> data) {
-            this.data = data;
-        }
-
-        public ArrayList<Movie> getData() {
-            return data;
-        }
+    private int numberOfColumns() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        // You can change this divider to adjust the size of the poster
+        int widthDivider = 400;
+        int width = displayMetrics.widthPixels;
+        int nColumns = width / widthDivider;
+        if (nColumns < 2) return 2;
+        return nColumns;
     }
 }

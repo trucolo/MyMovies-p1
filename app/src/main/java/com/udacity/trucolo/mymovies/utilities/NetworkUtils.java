@@ -18,11 +18,6 @@ public class NetworkUtils {
     private static String DYNAMIC_IMAGES_URL;
     private static String IMAGE_SIZE;
 
-
-    public NetworkUtils(String sortBy, String pageNumber, String apiKey){
-
-    }
-
     /**
      * Builds the URL used to talk to the moviesDB server using a sort parameter. This location is based
      * on the query capabilities of the moviesDB provider that we are using.
@@ -54,11 +49,9 @@ public class NetworkUtils {
         String INCLUDE_VIDEO_PARAM = c.getString(R.string.include_video);
         String PAGE_PARAM = c.getString(R.string.page);
         Uri builtUri = Uri.parse(MOVIES_BASE_URL).buildUpon()
+                .appendPath(sortBy)
                 .appendQueryParameter(API_KEY_PARAM, apiKey)
                 .appendQueryParameter(LANG_PARAM, LANG)
-                .appendQueryParameter(SORT_PARAM, sortBy)
-                .appendQueryParameter(ADULT_PARAM, c.getString(R.string.false_flag))
-                .appendQueryParameter(INCLUDE_VIDEO_PARAM, c.getString(R.string.false_flag))
                 .appendQueryParameter(PAGE_PARAM, pageNumber)
                 .build();
 

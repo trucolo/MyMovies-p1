@@ -119,14 +119,16 @@ public class FavoriteMovies extends AppCompatActivity implements MovieAdapter.Mo
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 
-    private Cursor getAllFavoritesSorted(String sort){
-        return mDb.query(FavoriteMoviesContract.FavoriteMovieEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
+    private Cursor getAllFavoritesSorted(){
+
+        return  getContentResolver().
+                query(
+                        FavoriteMoviesContract.CONTENT_URI.buildUpon().build(),
+                        null,
+                        null,
+                        null,
+                        null);
+
     }
 
     public class FetchMoviesTask extends AsyncTask<String, Void, Cursor> {
@@ -145,7 +147,7 @@ public class FavoriteMovies extends AppCompatActivity implements MovieAdapter.Mo
             }
 
             ArrayList<Movie> moviesData;
-            Cursor result = getAllFavoritesSorted(FavoriteMoviesContract.FavoriteMovieEntry.RATING);
+            Cursor result = getAllFavoritesSorted();
             return result;
 
         }

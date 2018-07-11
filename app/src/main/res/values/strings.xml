@@ -9,13 +9,13 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="connection_error">Ops, looks like you are offline, please check your connectivity and try again</string>
     <string name="general_error">Ops, looks like something went wrong when looking for your awesome movies. We hired some highly trained anteaters developers to help us</string>
-    <string name="popularity_desc">popularity.desc</string>
-    <string name="average_desc">vote_average.desc</string>
+    <string name="popularity_desc">popular</string>
+    <string name="average_desc">top_rated</string>
     <string name="movie">Movie</string>
     <string name="api_key">api_key</string>
     <string name="images_url">http://image.tmdb.org/t/p/</string>
     <string name="image_size">w342</string>
-    <string name="api_url">https://api.themoviedb.org/3/discover/movie?</string>
+    <string name="api_url">http://api.themoviedb.org/3/movie/</string>
     <string name="api_base">https://api.themoviedb.org/3/movie?</string>
     <string name="review_url">https://api.themoviedb.org/3/discover/movie?</string>
     <string name="json">json</string>
