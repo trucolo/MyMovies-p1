@@ -33,7 +33,6 @@ import java.util.Properties;
 public class FavoriteMovies extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler{
 
     private final String TAG = FavoriteMovies.class.getSimpleName();
-    private SQLiteDatabase mDb;
     ProgressBar mLoadingIndicator;
     RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
@@ -65,7 +64,6 @@ public class FavoriteMovies extends AppCompatActivity implements MovieAdapter.Mo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FavoriteMoviesDbHelper dbHelper = new FavoriteMoviesDbHelper(this);
-        mDb = dbHelper.getReadableDatabase();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_movies);
 
