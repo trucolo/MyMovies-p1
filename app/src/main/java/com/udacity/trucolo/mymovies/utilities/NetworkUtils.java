@@ -75,6 +75,79 @@ public class NetworkUtils {
         return url;
     }
 
+
+    public static URL buildUrlForTrailer(String apiKey, Context c, String movieId){
+
+        String TAG = NetworkUtils.class.getSimpleName();
+        String MOVIES_BASE_URL = c.getString(R.string.api_base);
+
+        /* The format we want our API to return */
+
+        String API_KEY_PARAM = c.getString(R.string.api_key);
+
+    /*
+    Example of API being called:
+    https://api.themoviedb.org/3/discover/movie?api_key=<API_KEY>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2
+    */
+
+        String LANG_PARAM = c.getString(R.string.language);
+        String LANG = c.getString(R.string.en_us);
+        Uri builtUri = Uri.parse(MOVIES_BASE_URL).buildUpon()
+                .appendPath(movieId)
+                .appendPath("videos")
+                .appendQueryParameter(API_KEY_PARAM, apiKey)
+                .appendQueryParameter(LANG_PARAM, LANG)
+                .build();
+
+        URL url = null;
+
+        try{
+            url = new URL(builtUri.toString());
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        }
+
+        Log.v(TAG, "Built URI " + url);
+
+        return url;
+    }
+
+    public static URL buildUrlForReviews(String apiKey, Context c, String movieId){
+
+        String TAG = NetworkUtils.class.getSimpleName();
+        String MOVIES_BASE_URL = c.getString(R.string.api_base);
+
+        /* The format we want our API to return */
+
+        String API_KEY_PARAM = c.getString(R.string.api_key);
+
+    /*
+    Example of API being called:
+    https://api.themoviedb.org/3/discover/movie?api_key=<API_KEY>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2
+    */
+
+        String LANG_PARAM = c.getString(R.string.language);
+        String LANG = c.getString(R.string.en_us);
+        Uri builtUri = Uri.parse(MOVIES_BASE_URL).buildUpon()
+                .appendPath(movieId)
+                .appendPath("reviews")
+                .appendQueryParameter(API_KEY_PARAM, apiKey)
+                .appendQueryParameter(LANG_PARAM, LANG)
+                .build();
+
+        URL url = null;
+
+        try{
+            url = new URL(builtUri.toString());
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        }
+
+        Log.v(TAG, "Built URI " + url);
+
+        return url;
+    }
+
     /**
      * This method is intended to check whether the url is valid
      *

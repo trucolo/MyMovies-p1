@@ -1,32 +1,64 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/iv_poster"
-        android:layout_width="300dp"
-        android:layout_height="229dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_weight="0.5"/>
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="left"
+        android:textAlignment="gravity"
+        android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/lightGray"
-        android:textStyle="bold" />
+        android:textSize="10sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_poster"
+        app:layout_constraintEnd_toEndOf="@+id/iv_poster"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_poster"
+        app:layout_constraintTop_toBottomOf="@+id/tv_vote_average"
+        app:layout_constraintVertical_bias="0.966"
+        tools:layout_marginEnd="4dp"
+        tools:text="@string/movie_title_dummy"
+        tools:textAppearance="@style/TextAppearance.Design.Hint"
+        tools:textSize="10sp" />
 
     <TextView
         android:id="@+id/tv_vote_average"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:textColor="@color/heavyYellow"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_poster"
+        app:layout_constraintEnd_toEndOf="@+id/iv_poster"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_poster"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="@string/average_rating_dummy" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

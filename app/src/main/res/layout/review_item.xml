@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkGray"
+    android:padding="0dp">
+
+
+    <TextView
+        android:id="@+id/tv_review_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:textAlignment="gravity"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/lightGray"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_review_author"
+        tools:text="@string/movie_title_dummy"
+        tools:textAppearance="@style/TextAppearance.Design.Hint"
+        tools:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_review_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/heavyYellow"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Author" />
+
+</android.support.constraint.ConstraintLayout>

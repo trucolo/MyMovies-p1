@@ -18,6 +18,9 @@
                 android:title="@string/sort_by_rating">
             </item>
         </menu>
+
     </item>
+
+
     <!--COMPLETED (1) Add a menu item to open the map-->
 </menu>

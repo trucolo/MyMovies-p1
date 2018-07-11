@@ -30,20 +30,17 @@
         <TextView
             android:id="@+id/tv_synopsis_label"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="21dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="8dp"
             android:text="@string/synopsis"
             android:textColor="@color/lightGray"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_synopsis"
-            app:layout_constraintEnd_toStartOf="@+id/tv_rating"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/textVideos"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_small_poster"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.1" />
 
         <TextView
             android:id="@+id/tv_rating"
@@ -61,39 +58,39 @@
         <TextView
             android:id="@+id/tv_synopsis"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="331dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:gravity="left"
+            android:paddingEnd="32dp"
             android:textColor="@color/lightGray"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/tv_synopsis_label"
+            app:layout_constraintTop_toBottomOf="@+id/iv_small_poster" />
 
         <ImageView
             android:id="@+id/iv_small_poster"
             android:layout_width="89dp"
             android:layout_height="138dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="160dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@color/darkGray" />
 
         <TextView
             android:id="@+id/tv_movie_title"
-            android:layout_width="252dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="244dp"
+            android:layout_marginTop="252dp"
+            android:paddingEnd="32dp"
             android:textColor="@color/lightGray"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.027"
             app:layout_constraintStart_toEndOf="@+id/iv_small_poster"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,15 +99,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="@color/darkGray"
             android:foregroundGravity="center"
-            android:paddingEnd="0dp"
+            android:paddingEnd="8dp"
             android:paddingStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textVideos"
             app:layout_constraintTop_toBottomOf="@+id/textVideos" />
 
         <ImageButton
@@ -119,10 +116,10 @@
             android:layout_height="30dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:background="@color/darkGray"
             android:onClick="toggleFavorite"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toEndOf="@+id/tv_rating"
             app:layout_constraintTop_toBottomOf="@+id/tv_movie_title"
             app:srcCompat="@android:drawable/btn_star_big_off" />
@@ -140,20 +137,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_synopsis" />
 
         <TextView
-            android:id="@+id/textVideos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Videos"
-            android:textColor="@color/heavyYellow"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-        <TextView
             android:id="@+id/textReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -164,27 +147,40 @@
             android:textColor="@color/heavyYellow"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view_trailers" />
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toEndOf="@+id/textVideos"
+            app:layout_constraintTop_toTopOf="@+id/divider" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_reviews"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
             android:layout_marginBottom="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginTop="8dp"
             android:background="@color/darkGray"
             android:foregroundGravity="center"
-            android:paddingEnd="0dp"
+            android:paddingEnd="32dp"
             android:paddingStart="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textReview"
             app:layout_constraintTop_toBottomOf="@+id/textReview"
-            app:layout_constraintVertical_bias="0.692" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textVideos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:text="Videos"
+            android:textColor="@color/heavyYellow"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
